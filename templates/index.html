@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>График данных</title>
+</head>
+<body>
+<div>
+    <div style="display: flex">
+        {% for index in indices %}
+            <span>{{ index }}</span>
+            <div style="display: inline-block; margin: 10px;">
+                {% for key, image_array in images_for_signals.items() %}
+                    {% if index < image_array|length %}
+                        <!-- Проверяем, есть ли изображение с таким индексом в категории -->
+                        <img src="data:image/png;base64,{{ image_array[index] }}" alt="image" style="width: 500px;">
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <br>
+        {% endfor %}
+        <div class="">
+            <img src="data:image/png;base64,{{ image_for_current_measurements }}" alt="" style="width: 500px;">
+        </div>
+        <div class="">
+            <img src="data:image/png;base64,{{ Qch_hist }}" alt="" style="width: 500px;">
+        </div>
+    </div>
+</div>
+</body>
+</html>
